@@ -1,9 +1,27 @@
-app.config(config, function config($stateProvider,$urlRouterProvider){
+app.config(function($stateProvider,$urlRouterProvider){
+	$urlRouterProvider.otherwise('/');
 	$stateProvider
 	.state("index",{
 		url:"/",
-		templateUrl: "index.html"
-	})
+		views:{
+			'@':{
+				templateUrl: 'views/layout.html',
+				controller: 'indexctrl'
+			},
+			'leftmenu@index':{
+				templateUrl: 'views/left-menu.html',
+				controller: 'leftMenu'
+			},
+			'navbar@index':{templateUrl: 'views/navbar.html'},
+			'maincontent' : {
+				templateUrl: 'views/main-content.html',
+				controller: 'main-content'}
+			}
+		})
+})
+.controller('indexctrl', function(){})
+	//
+	/*
 	.state("create_board",{
 		url:"/create board",
 		templateUrl:"views/create_board.html",
@@ -64,4 +82,4 @@ app.config(config, function config($stateProvider,$urlRouterProvider){
 		templateUrl:"views/left-menu.html"
 		controller:"left-menu"
 	})
-})
+})*/
